@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  javawebapp:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: javawebapp
+    ports:
+      - "8080:8080"
+    volumes:
+      - /Users/sajan/desktop/myapp:/app
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/todo
+
+  postgres:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_DB=todo
+      - POSTGRES_USER=postgres
